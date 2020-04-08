@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:www": "rm -rf www && yarn build && mv build www && cp -R config/. www/",
+    "build:www": "rm -rf www && yarn build && mv build www",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "images": "node --experimental-modules src/parser/fandom/image-dl.mjs --colors"

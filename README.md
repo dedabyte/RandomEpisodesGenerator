@@ -1,4 +1,2 @@
 # RandomEpisodesGenerator
 RandomEpisodesGenerator
-
-kurac jebeni

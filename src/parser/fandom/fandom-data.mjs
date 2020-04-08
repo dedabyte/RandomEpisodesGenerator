@@ -148,7 +148,7 @@ export const data = [
     [
         {
             "title": "The One With Ross' New Girlfriend",
-            "imageUrl": "https://vignette.wikia.nocookie.net/friends/images/f/f0/TOWRoss%27NewGirlfriend.png/revision/latest/scale-to-width-down/139?cb=20180211153125",
+            "imageUrl": "https://vignette.wikia.nocookie.net/friends/images/f/f0/TOWRoss%27NewGirlfriend.png/revision/latest/scale-to-width-down/",
             "airDate": "September 21, 1995",
             "plot": "Rachel gets an unpleasant surprise when Ross returns home. Phoebe has varied success when cutting her friends' hair!"
         },
@@ -160,7 +160,7 @@ export const data = [
         },
         {
             "title": "The One Where Heckles Dies",
-            "imageUrl": "https://vignette.wikia.nocookie.net/friends/images/1/11/TOWHecklesDies.png/revision/latest/scale-to-width-down/141?cb=20180211153326",
+            "imageUrl": "https://vignette.wikia.nocookie.net/friends/images/1/11/TOWHecklesDies.png/revision/latest/scale-to-width-down/",
             "airDate": "October 5, 1995",
             "plot": "The downstairs neighbor dies and bequeaths his strange possessions to Monica and Rachel."
         },
@@ -1421,12 +1421,6 @@ export const data = [
             "imageUrl": "https://vignette.wikia.nocookie.net/friends/images/d/d6/TOWRachel%27sGoingAwayParty.png/revision/latest/scale-to-width-down/",
             "airDate": "April 29, 2004",
             "plot": "Ross goes berserk when Rachel decides that Monica's farewell party is the perfect time to share a private, tearful goodbye with each friend - with the single exception of Ross!"
-        },
-        {
-            "title": "The One With All The Other Ones",
-            "imageUrl": "https://vignette.wikia.nocookie.net/friends/images/8/88/10YrsofFriends.jpg/revision/latest/scale-to-width-down/",
-            "airDate": "May 6, 2004",
-            "plot": "A clip show of the past seasons, which aired before The Last One."
         },
         {
             "title": "The Last One, Part 1",

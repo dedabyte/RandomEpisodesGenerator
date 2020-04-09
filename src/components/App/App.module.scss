@@ -1,181 +1,181 @@
 @import '../../style/style.scss';
 
 .titleWrap {
-  height: 100vh; // -> 190px
-  padding-bottom: 0; // -> 40px
-  color: white;
-  //background: $color-2;
-  //background: linear-gradient(180deg, $color-2 20%, lighten($color-2, 8%) 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	height: 100vh; // -> 190px
+	padding-bottom: 0; // -> 40px
+	color: white;
+	//background: $color-2;
+	//background: linear-gradient(180deg, $color-2 20%, lighten($color-2, 8%) 100%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 
-  transition: height #{$animation}, padding-bottom #{$animation};
+	transition: height #{$animation}, padding-bottom #{$animation};
 
-  .title {
-    height: 50px;
-    background-image: url('../../assets/friends_logo_black.png');
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    margin-bottom: 8px;
-  }
+	.title {
+		height: 50px;
+		background-image: url('../../assets/friends_logo_black.png');
+		background-position-x: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		margin-bottom: 8px;
+	}
 
-  .subtitle {
-    font-size: 14px;
-  }
+	.subtitle {
+		font-size: 14px;
+	}
 }
 
 .bodyWrap {
-  flex: 1;
-  display: flex;
-  //background: #3b3b3b;
-  //background: lighten($color-2, 8%);
-  //background: linear-gradient(180deg, #333 20%, #222 100%);
-  //padding: 51px $gutter $gutter;
-  padding: $gutter;
+	flex: 1;
+	display: flex;
+	//background: #3b3b3b;
+	//background: lighten($color-2, 8%);
+	//background: linear-gradient(180deg, #333 20%, #222 100%);
+	//padding: 51px $gutter $gutter;
+	padding: $gutter;
 }
 
 .descriptionLine {
-  height: 0;
-  position: relative;
-  margin: 0 $gutter;
+	height: 0;
+	position: relative;
+	margin: 0 $gutter;
 }
 
 .descriptionWrap {
-  flex: 1;
-  position: relative;
-  height: calc(100vh - 224px);
-  top: 200px; // -> -50px;
-  display: flex;
-  flex-direction: column;
+	flex: 1;
+	position: relative;
+	height: calc(100vh - 224px);
+	top: 200px; // -> -50px;
+	display: flex;
+	flex-direction: column;
 
-  transition: top #{$animation};
+	transition: top #{$animation};
 
-  .progressWrap {
-    border-radius: $main-br;
-    box-shadow: 0 6px 12px #1c1c1c;
-    background: #111;
-    //background: linear-gradient(180deg, #2d2d2d 20%, #292929 100%);
-    background: linear-gradient(135deg, #000 0%, #1c1c1c 90%);
-    padding: $main-br;
-    display: flex;
+	.progressWrap {
+		border-radius: $main-br;
+		box-shadow: 0 6px 12px #1c1c1c;
+		background: #111;
+		//background: linear-gradient(180deg, #2d2d2d 20%, #292929 100%);
+		background: linear-gradient(135deg, #000 0%, #1c1c1c 90%);
+		padding: $main-br;
+		display: flex;
 
-    & > div {
-      flex: 1;
-    }
+		& > div {
+			flex: 1;
+		}
 
-    .progressDivider {
-      flex: none;
-      width: $main-br;
-    }
-  }
+		.progressDivider {
+			flex: none;
+			width: $main-br;
+		}
+	}
 
-  .episodeWrap {
-    border-radius: $main-br;
-    box-shadow: 0 6px 12px #1c1c1c;
-    background-color: black;
-    overflow: hidden;
-    margin-top: $gutter;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    position: relative;
-    top: 400px; // -> 0px;
+	.episodeWrap {
+		border-radius: $main-br;
+		box-shadow: 0 6px 12px #1c1c1c;
+		background-color: black;
+		overflow: hidden;
+		margin-top: $gutter;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		position: relative;
+		top: 400px; // -> 0px;
 
-    transition: top #{$animation2};
+		transition: top #{$animation2};
 
-    .title {
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-      padding: $main-br;
-    }
+		.title {
+			font-size: 20px;
+			font-weight: bold;
+			color: white;
+			padding: $main-br;
+		}
 
-    .cover {
-      flex: 1;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      display: flex;
-      overflow: hidden;
+		.cover {
+			flex: 1;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			display: flex;
+			overflow: hidden;
 
-      .plotWrap {
-        font-size: 14px;
-        font-weight: normal;
-        color: darken(white, 10%);
-        background: rgba(0,0,0,.3);
-        background: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0.1) 100%);
-        padding: 0 $main-br;
+			.plotWrap {
+				font-size: 14px;
+				font-weight: normal;
+				color: darken(white, 10%);
+				background: rgba(0, 0, 0, .3);
+				background: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0.1) 100%);
+				padding: 0 $main-br;
 
-        .plot {
-          transition: transform #{$animation};
+				.plot {
+					transition: transform #{$animation};
 
-          &.hide {
-            transform: translateY(-100%);
-          }
-        }
-      }
-    }
+					&.hide {
+						transform: translateY(-100%);
+					}
+				}
+			}
+		}
 
-    &.changeEpisode {
-      animation-name: changeEpisode;
-      animation-duration: 700ms;
-      animation-timing-function: ease;
-    }
-  }
+		&.changeEpisode {
+			animation-name: changeEpisode;
+			animation-duration: 700ms;
+			animation-timing-function: ease;
+		}
+	}
 }
 
 
 .generateButton {
-  margin: 0;
-  padding: 0;
-  outline: none;
-  border: 0;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: 0;
 
-  height: 64px;
-  font-size: 24px;
-  font-weight: bold;
+	height: 64px;
+	font-size: 24px;
+	font-weight: bold;
 
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  background: $color-1;
-  background: linear-gradient(90deg, $color-1 0%, $color-3 100%);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	background: $color-1;
+	background: linear-gradient(90deg, $color-1 0%, $color-3 100%);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-  &:active {
-    background: linear-gradient(240deg, $color-1 0%, $color-3 100%);
-  }
+	&:active {
+		background: linear-gradient(240deg, $color-1 0%, $color-3 100%);
+	}
 }
 
 @keyframes changeEpisode {
-  0% {
-    //transform: translateX(-100vw);
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    //transform: translateX(0);
-    transform: translateY(0);
-    opacity: 1;
-  }
+	0% {
+		//transform: translateX(-100vw);
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		//transform: translateX(0);
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
 
 .init {
-  .titleWrap {
-    height: 190px;
-    padding-bottom: 40px;
-  }
+	.titleWrap {
+		height: 190px;
+		padding-bottom: 40px;
+	}
 
-  .descriptionWrap {
-    top: -50px;
-  }
+	.descriptionWrap {
+		top: -50px;
+	}
 
-  .episodeWrap {
-    top: 0;
-  }
+	.episodeWrap {
+		top: 0;
+	}
 }

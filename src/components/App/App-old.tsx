@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
 import c from './App.module.scss';
 import cls from 'classnames';
+import { data } from '../../data';
 import { ProgressBar } from '../ProgressBar';
 import { makeSE } from '../../utils';
-import { GeneratedData } from "../../types";
-import { generateNextEpisode } from "../../utils/generator";
+
+const rnd = (minimum: number, maximum: number) => Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
 
 export const App = () => {
+	const { friends: friendsData } = data;
+
 	const [init, setInit] = useState(false);
 
-	const [generated, setGenerated] = useState<GeneratedData>({
-		seasonIndex: -1,
+	const [generated, setGenerated] = useState<{
+		season: number,
+		seasonProgress: string;
+		episode: number,
+		episodeProgress: string;
+	}>({
+		season: -1,
 		seasonProgress: '0%',
-		episodeIndex: -1,
+		episode: -1,
 		episodeProgress: '0%',
-		episode: null,
 	});
 
 	const [isChanging, setIsChanging] = useState(false);
@@ -22,7 +29,9 @@ export const App = () => {
 	const [showPlot, setShowPlot] = useState(true);
 
 	const handleGenerate = () => {
-		const generatedData = generateNextEpisode();
+		const seasonIndex = rnd(0, friendsData.length - 1);
+		const season = friendsData[seasonIndex];
+		const episodeIndex = rnd(0, season.length - 1);
 
 		if (init) {
 			setIsChanging(true);
@@ -31,10 +40,17 @@ export const App = () => {
 
 		setInit(true);
 
-		setGenerated(generatedData);
+		setGenerated({
+			season: seasonIndex,
+			seasonProgress: `${seasonIndex + 1}0%`,
+			episode: episodeIndex,
+			episodeProgress: `${Math.round((episodeIndex + 1) / season.length * 100)}%`,
+		});
 	};
 
 	const handleTogglePlot = () => setShowPlot(!showPlot);
+
+	const episode = generated.season >= 0 ? friendsData[generated.season][generated.episode] : null;
 
 	return (
 		<div id="app" className={cls(init && c.init)}>
@@ -48,17 +64,17 @@ export const App = () => {
 				<div className={c.descriptionWrap}>
 
 					<div className={c.progressWrap}>
-						<ProgressBar title={'SEASON'} value={generated.seasonIndex + 1} progress={generated.seasonProgress}/>
+						<ProgressBar title={'SEASON'} value={generated.season + 1} progress={generated.seasonProgress}/>
 						<div className={c.progressDivider}/>
-						<ProgressBar title={'EPISODE'} value={generated.episodeIndex + 1} progress={generated.episodeProgress}/>
+						<ProgressBar title={'EPISODE'} value={generated.episode + 1} progress={generated.episodeProgress}/>
 					</div>
 
 					<div className={cls(c.episodeWrap, isChanging && c.changeEpisode)}>
-						<div className={c.title}>{generated.episode?.title}</div>
+						<div className={c.title}>{episode?.title}</div>
 						<div className={c.cover}
-								 style={{ backgroundImage: `url(./img/${makeSE(generated.seasonIndex, generated.episodeIndex)}.png)` }}>
+								 style={{ backgroundImage: `url(./img/${makeSE(generated.season, generated.episode)}.png)` }}>
 							<div className={cls(c.plotWrap, !showPlot && c.hide)} onClick={handleTogglePlot}>
-								<div className={cls(c.plot, !showPlot && c.hide)}>{generated.episode?.plot}</div>
+								<div className={cls(c.plot, !showPlot && c.hide)}>{episode?.plot}</div>
 							</div>
 						</div>
 					</div>

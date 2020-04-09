@@ -5,6 +5,7 @@ import { ProgressBar } from '../ProgressBar';
 import { makeSE } from '../../utils';
 import { GeneratedData } from "../../types";
 import { generateNextEpisode } from "../../utils/generator";
+import { Circle } from "../Info";
 
 export const App = () => {
 	const [init, setInit] = useState(false);
@@ -39,9 +40,11 @@ export const App = () => {
 	return (
 		<div id="app" className={cls(init && c.init)}>
 
+			{init && <Circle/>}
+
 			<div className={c.titleWrap}>
 				<div className={c.title}/>
-				<div className={c.subtitle}>❤ Random Episodes Generator ❤</div>
+				<div className={c.subtitle}>Random Episodes Generator</div>
 			</div>
 
 			<div className={c.descriptionLine}>

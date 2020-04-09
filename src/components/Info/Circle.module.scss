@@ -1,0 +1,125 @@
+@import '../../style/style.scss';
+
+.hamburger {
+	position: absolute;
+	top: 50px;
+	left: $gutter;
+	width: 20px;
+	height: 20px;
+	background: url('../../assets/hamburger.svg') center/contain no-repeat;
+	animation: hamburgerIn #{$animation};
+}
+
+@keyframes hamburgerIn {
+	from {
+		transform: translateX(-40px);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+.progressWrap {
+	position: absolute;
+	padding: calc(2 * #{$main-br});
+	z-index: 12;
+	width: 80vw;
+
+	animation: dropShow #{$animation};
+
+	.progressText {
+		padding-top: $gutter;
+		color: white;
+		font-weight: bold;
+		font-size: 20px;
+		text-align: left;
+
+		span {
+			font-size: 24px;
+
+			&.ep {
+				color: $color-1;
+			}
+			&.all {
+				color: $color-3;
+			}
+		}
+	}
+}
+
+.circle {
+	position: absolute;
+	top: -100vw;
+	left: -100vw;
+	border-radius: 200vw;
+	background-color: $color-2;
+	box-shadow: 0 6px 12px #1c1c1c;
+	z-index: 11;
+
+	&.expanded {
+		width: 200vw;
+		height: 200vw;
+		animation: circleExpand #{$animation};
+	}
+
+	&.collapsed {
+		width: 100vw;
+		height: 100vw;
+		animation: circleCollapse #{$animation};
+	}
+}
+
+@keyframes circleExpand {
+	from {
+		width: 100vw;
+		height: 100vw;
+	}
+	to {
+		width: 200vw;
+		height: 200vw;
+	}
+}
+@keyframes circleCollapse {
+	from {
+		width: 200vw;
+		height: 200vw;
+	}
+	to {
+		width: 100vw;
+		height: 100vw;
+	}
+}
+
+.drop {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .4);
+	z-index: 10;
+
+	&.shown {
+		opacity: 1;
+		animation: dropShow #{$animation};
+	}
+	&.hidden {
+		opacity: 0;
+		animation: dropHide #{$animation};
+	}
+}
+
+@keyframes dropShow {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes dropHide {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

@@ -2,7 +2,7 @@ import { data } from '../data';
 import { makeSE, parseSE } from './index';
 import { ls, LsKeys } from './ls';
 import { shuffle } from './shuffle';
-import { GeneratedData } from "../types";
+import { GeneratedData, GeneratedProgressData } from "../types";
 
 const { friends: friendsData } = data;
 
@@ -67,3 +67,11 @@ export const generateNextEpisode = (): GeneratedData => {
 		episode: friendsData[sIdx][eIdx],
 	};
 };
+
+export const getProgress = (): GeneratedProgressData => {
+	return {
+		allEpisodesCount: seArr.length,
+		currentEpisodeNumber: lastIdx + 1,
+		progress: `${Math.round((lastIdx + 1) / seArr.length * 100)}%`
+	}
+}

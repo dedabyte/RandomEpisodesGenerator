@@ -47,29 +47,21 @@ export const App = () => {
 				<div className={c.subtitle}>Random Episodes Generator</div>
 			</div>
 
-			<div className={c.descriptionLine}>
-				<div className={c.descriptionWrap}>
-
-					<div className={c.progressWrap}>
-						<ProgressBar title={'SEASON'} value={generated.seasonIndex + 1} progress={generated.seasonProgress}/>
-						<div className={c.progressDivider}/>
-						<ProgressBar title={'EPISODE'} value={generated.episodeIndex + 1} progress={generated.episodeProgress}/>
-					</div>
-
-					<div className={cls(c.episodeWrap, isChanging && c.changeEpisode)}>
-						<div className={c.title}>{generated.episode?.title}</div>
-						<div className={c.cover}
-								 style={{ backgroundImage: `url(./img/${makeSE(generated.seasonIndex, generated.episodeIndex)}.png)` }}>
-							<div className={cls(c.plotWrap, !showPlot && c.hide)} onClick={handleTogglePlot}>
-								<div className={cls(c.plot, !showPlot && c.hide)}>{generated.episode?.plot}</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
+			<div className={c.progressWrap}>
+				<ProgressBar title={'SEASON'} value={generated.seasonIndex + 1} progress={generated.seasonProgress}/>
+				<div className={c.progressDivider}/>
+				<ProgressBar title={'EPISODE'} value={generated.episodeIndex + 1} progress={generated.episodeProgress}/>
 			</div>
 
-			<div className={c.bodyWrap}/>
+			<div className={cls(c.episodeWrap, isChanging && c.changeEpisode)}>
+				<div className={c.title}>{generated.episode?.title}</div>
+				<div className={c.cover}
+						 style={{ backgroundImage: `url(./img/${makeSE(generated.seasonIndex, generated.episodeIndex)}.png)` }}>
+					<div className={cls(c.plotWrap, !showPlot && c.hide)} onClick={handleTogglePlot}>
+						<div className={cls(c.plot, !showPlot && c.hide)}>{generated.episode?.plot}</div>
+					</div>
+				</div>
+			</div>
 
 			<button className={c.generateButton} onClick={handleGenerate} disabled={isChanging}>Pick next episode!</button>
 

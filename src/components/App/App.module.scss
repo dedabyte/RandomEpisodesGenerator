@@ -1,16 +1,16 @@
 @import '../../style/style.scss';
 
 .titleWrap {
-	height: 100vh; // -> 190px
-	padding-bottom: 0; // -> 40px
+	position: relative;
+	height: 150px;
 	color: white;
-	//background: $color-2;
-	//background: linear-gradient(180deg, $color-2 20%, lighten($color-2, 8%) 100%);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 
-	transition: height #{$animation}, padding-bottom #{$animation};
+	will-change: transform;
+	transform: translateY(calc(50vh - 50%));
+	transition: transform #{$animation};
 
 	.title {
 		height: 50px;
@@ -26,103 +26,94 @@
 	}
 }
 
-.bodyWrap {
-	flex: 1;
-	display: flex;
-	//background: #3b3b3b;
-	//background: lighten($color-2, 8%);
-	//background: linear-gradient(180deg, #333 20%, #222 100%);
-	//padding: 51px $gutter $gutter;
-	padding: $gutter;
-}
-
-.descriptionLine {
-	height: 0;
+.progressWrap {
 	position: relative;
+	border-radius: $main-br;
+	box-shadow: 0 6px 12px #1c1c1c;
+	background: #111;
+	background: linear-gradient(135deg, #000 0%, #1c1c1c 90%);
+	padding: $main-br;
 	margin: 0 $gutter;
-}
-
-.descriptionWrap {
-	flex: 1;
-	position: relative;
-	height: calc(100vh - 224px);
-	top: 200px; // -> -50px;
 	display: flex;
-	flex-direction: column;
 
-	transition: top #{$animation};
+	will-change: transform;
+	transform: translateY(100vh);
+	transition: transform #{$animation};
 
-	.progressWrap {
-		border-radius: $main-br;
-		box-shadow: 0 6px 12px #1c1c1c;
-		background: #111;
-		//background: linear-gradient(180deg, #2d2d2d 20%, #292929 100%);
-		background: linear-gradient(135deg, #000 0%, #1c1c1c 90%);
-		padding: $main-br;
-		display: flex;
-
-		& > div {
-			flex: 1;
-		}
-
-		.progressDivider {
-			flex: none;
-			width: $main-br;
-		}
+	& > div {
+		flex: 1;
 	}
 
-	.episodeWrap {
-		border-radius: $main-br;
-		box-shadow: 0 6px 12px #1c1c1c;
-		background-color: black;
-		overflow: hidden;
-		margin-top: $gutter;
-		display: flex;
-		flex-direction: column;
+	.progressDivider {
+		flex: none;
+		width: $main-br;
+	}
+}
+
+.episodeWrap {
+	position: relative;
+	height: calc(100vh - 375px); // generate button + title wrap + progress wrap + 2*gutter
+	border-radius: $main-br;
+	box-shadow: 0 6px 12px #1c1c1c;
+	background-color: black;
+	overflow: hidden;
+	margin: $gutter $gutter 0;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	will-change: transform, opacity;
+	transform: translateY(100vh);
+	transition: transform #{$animation2};
+
+	.title {
+		font-size: 20px;
+		font-weight: bold;
+		color: white;
+		padding: $main-br;
+	}
+
+	.cover {
 		flex: 1;
-		position: relative;
-		top: 400px; // -> 0px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		display: flex;
+		overflow: hidden;
 
-		transition: top #{$animation2};
+		.plotWrap {
+			font-size: 14px;
+			font-weight: normal;
+			color: darken(white, 10%);
+			background: rgba(0, 0, 0, .3);
+			background: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0.1) 100%);
+			padding: 0 $main-br;
 
-		.title {
-			font-size: 20px;
-			font-weight: bold;
-			color: white;
-			padding: $main-br;
-		}
+			.plot {
+				transition: transform #{$animation};
 
-		.cover {
-			flex: 1;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-			display: flex;
-			overflow: hidden;
-
-			.plotWrap {
-				font-size: 14px;
-				font-weight: normal;
-				color: darken(white, 10%);
-				background: rgba(0, 0, 0, .3);
-				background: linear-gradient(180deg, black 0%, rgba(0, 0, 0, 0.4) 20%, rgba(0, 0, 0, 0.1) 100%);
-				padding: 0 $main-br;
-
-				.plot {
-					transition: transform #{$animation};
-
-					&.hide {
-						transform: translateY(-100%);
-					}
+				&.hide {
+					transform: translateY(-100%);
 				}
 			}
 		}
+	}
 
-		&.changeEpisode {
-			animation-name: changeEpisode;
-			animation-duration: 700ms;
-			animation-timing-function: ease;
-		}
+	&.changeEpisode {
+		animation-name: changeEpisode;
+		animation-duration: 700ms;
+		animation-timing-function: ease;
+	}
+}
+
+@keyframes changeEpisode {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
 	}
 }
 
@@ -152,30 +143,8 @@
 	}
 }
 
-@keyframes changeEpisode {
-	0% {
-		//transform: translateX(-100vw);
-		transform: translateY(100%);
-		opacity: 0;
-	}
-	100% {
-		//transform: translateX(0);
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-
 .init {
-	.titleWrap {
-		height: 190px;
-		padding-bottom: 40px;
-	}
-
-	.descriptionWrap {
-		top: -50px;
-	}
-
-	.episodeWrap {
-		top: 0;
+	.titleWrap, .progressWrap, .episodeWrap {
+		transform: translateY(0);
 	}
 }

@@ -8,6 +8,7 @@
 	height: 20px;
 	background: url('../../assets/hamburger.svg') center/contain no-repeat;
 	animation: hamburgerIn #{$animation};
+	z-index: 1;
 }
 
 @keyframes hamburgerIn {

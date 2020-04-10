@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { App } from './components/App';
 import './index.scss';
 import * as serviceWorker from './serviceWorker';
+import { initData } from "./utils/generator";
+
+initData();
 
 ReactDOM.render(
 	<React.StrictMode>

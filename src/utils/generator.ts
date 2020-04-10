@@ -27,11 +27,7 @@ const makeNewData = () => {
 	ls.set(LsKeys.SHUFFLED_INDEX, lastIdx);
 }
 
-const initData = () => {
-	if (seArr.length && lastIdx >= 0) {
-		return;
-	}
-
+export const initData = () => {
 	const seArrLS = ls.get(LsKeys.SHUFFLED);
 	const lastIdxLS = ls.get(LsKeys.SHUFFLED_INDEX);
 
@@ -50,8 +46,6 @@ const generateNextIdx = () => {
 }
 
 export const generateNextEpisode = (): GeneratedData => {
-	initData();
-
 	if (lastIdx >= seArr.length - 1) {
 		makeNewData();
 	}

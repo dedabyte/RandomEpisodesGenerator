@@ -1,16 +1,19 @@
 @import '../../style/style.scss';
 
+$height-titleWrap: 150px;
+$height-generateButton: 64px;
+$height-progressWrap: 130px;
+
 .titleWrap {
 	position: relative;
-	height: 150px;
+	height: $height-titleWrap;
 	color: white;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 
 	will-change: transform;
-	transform: translateY(calc(50vh - 50%));
-	transition: transform #{$animation};
+	transform: translateY(calc(50vh - (#{$height-titleWrap} / 2) - #{$height-generateButton}));
 
 	.title {
 		height: 50px;
@@ -28,6 +31,7 @@
 
 .progressWrap {
 	position: relative;
+	height: $height-progressWrap;
 	border-radius: $main-br;
 	box-shadow: 0 6px 12px #1c1c1c;
 	background: #111;
@@ -38,7 +42,6 @@
 
 	will-change: transform;
 	transform: translateY(100vh);
-	transition: transform #{$animation};
 
 	& > div {
 		flex: 1;
@@ -52,7 +55,7 @@
 
 .episodeWrap {
 	position: relative;
-	height: calc(100vh - 375px); // generate button + title wrap + progress wrap + 2*gutter
+	height: calc(100vh - #{$height-titleWrap} - #{$height-progressWrap} - #{$height-generateButton} - 2 * #{$gutter});
 	border-radius: $main-br;
 	box-shadow: 0 6px 12px #1c1c1c;
 	background-color: black;
@@ -64,7 +67,6 @@
 
 	will-change: transform, opacity;
 	transform: translateY(100vh);
-	transition: transform #{$animation2};
 
 	.title {
 		font-size: 20px;
@@ -100,9 +102,7 @@
 	}
 
 	&.changeEpisode {
-		animation-name: changeEpisode;
-		animation-duration: 700ms;
-		animation-timing-function: ease;
+		animation: changeEpisode #{$animation};
 	}
 }
 
@@ -124,7 +124,7 @@
 	outline: none;
 	border: 0;
 
-	height: 64px;
+	height: $height-generateButton;
 	font-size: 24px;
 	font-weight: bold;
 
@@ -145,6 +145,36 @@
 
 .init {
 	.titleWrap, .progressWrap, .episodeWrap {
+		transform: translateY(0);
+	}
+}
+
+.initTitleWrap {
+	animation: slideUpTitle #{$animation};
+}
+
+@keyframes slideUpTitle {
+	from {
+		transform: translateY(calc(50vh - (#{$height-titleWrap} / 2) - #{$height-generateButton}));
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+.initProgressWrap {
+	animation: slideUpProgressAndEpisode #{$animation};
+}
+
+.initEpisodeWrap {
+	animation: slideUpProgressAndEpisode #{$animation2};
+}
+
+@keyframes slideUpProgressAndEpisode {
+	from {
+		transform: translateY(100vh);
+	}
+	to {
 		transform: translateY(0);
 	}
 }

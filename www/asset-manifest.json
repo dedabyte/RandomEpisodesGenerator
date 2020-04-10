@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "./static/css/main.f8b275e3.chunk.css",
-    "main.js": "./static/js/main.2967efaf.chunk.js",
-    "main.js.map": "./static/js/main.2967efaf.chunk.js.map",
+    "main.css": "./static/css/main.9fb91695.chunk.css",
+    "main.js": "./static/js/main.eee3f2eb.chunk.js",
+    "main.js.map": "./static/js/main.eee3f2eb.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.7270de16.js",
     "runtime-main.js.map": "./static/js/runtime-main.7270de16.js.map",
     "static/js/2.141fb10a.chunk.js": "./static/js/2.141fb10a.chunk.js",
     "static/js/2.141fb10a.chunk.js.map": "./static/js/2.141fb10a.chunk.js.map",
     "index.html": "./index.html",
-    "precache-manifest.26f6185d12f450cd73aacee84e0be7dc.js": "./precache-manifest.26f6185d12f450cd73aacee84e0be7dc.js",
+    "precache-manifest.9ca1567e5fec7ab29359d186041f0094.js": "./precache-manifest.9ca1567e5fec7ab29359d186041f0094.js",
     "service-worker.js": "./service-worker.js",
-    "static/css/main.f8b275e3.chunk.css.map": "./static/css/main.f8b275e3.chunk.css.map",
+    "static/css/main.9fb91695.chunk.css.map": "./static/css/main.9fb91695.chunk.css.map",
     "static/js/2.141fb10a.chunk.js.LICENSE.txt": "./static/js/2.141fb10a.chunk.js.LICENSE.txt",
     "static/media/App.module.scss": "./static/media/friends_logo_black.90cf00b2.png",
     "static/media/Info.module.scss": "./static/media/hamburger.facc83e8.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.7270de16.js",
     "static/js/2.141fb10a.chunk.js",
-    "static/css/main.f8b275e3.chunk.css",
-    "static/js/main.2967efaf.chunk.js"
+    "static/css/main.9fb91695.chunk.css",
+    "static/js/main.eee3f2eb.chunk.js"
   ]
 }

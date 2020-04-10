@@ -51,10 +51,15 @@
 	position: absolute;
 	top: -100vw;
 	left: -100vw;
+	width: 100vw;
+	height: 100vw;
 	border-radius: 200vw;
 	background-color: $color-2;
-	box-shadow: 0 6px 12px #1c1c1c;
+	box-shadow: 0 6px 12px black;
 	z-index: 11;
+
+	will-change: transform;
+	transform-origin: top left;
 
 	&.expanded {
 		width: 200vw;
@@ -63,30 +68,24 @@
 	}
 
 	&.collapsed {
-		width: 100vw;
-		height: 100vw;
 		animation: circleCollapse #{$animation};
 	}
 }
 
 @keyframes circleExpand {
 	from {
-		width: 100vw;
-		height: 100vw;
+		transform: scale(.5);
 	}
 	to {
-		width: 200vw;
-		height: 200vw;
+		transform: scale(1);
 	}
 }
 @keyframes circleCollapse {
 	from {
-		width: 200vw;
-		height: 200vw;
+		transform: scale(2);
 	}
 	to {
-		width: 100vw;
-		height: 100vw;
+		transform: scale(1);
 	}
 }
 

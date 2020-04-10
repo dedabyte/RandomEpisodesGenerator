@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import c from './Circle.module.scss';
+import c from './Info.module.scss';
 import cls from 'classnames';
 import { GeneratedProgressData } from "../../types";
 import { getProgress } from "../../utils/generator";
 import { ProgressBar } from "../ProgressBar";
 
-export const Circle: React.FC = () => {
+export const Info: React.FC = () => {
 	const [shown, setShown] = useState(false);
 	const [startHide, setStartHide] = useState(false);
 	const [progress, setProgress] = useState<GeneratedProgressData | null>(null);

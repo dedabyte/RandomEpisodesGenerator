@@ -1,1 +1,1 @@
-export { Circle } from './Circle'
+export { Info } from './Info'

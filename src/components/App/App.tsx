@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import c from './App.module.scss';
 import cls from 'classnames';
 import { ProgressBar } from '../ProgressBar';
 import { makeSE, triggerAnimation } from '../../utils';
 import { GeneratedData } from '../../types';
-import { generateNextEpisode } from '../../utils/generator';
+import { generateNextEpisode, saveIndex } from '../../utils/generator';
 import { Info } from '../Info';
 
 export const App = () => {
@@ -26,18 +26,24 @@ export const App = () => {
 	const progressWrapRef = useRef(null);
 	const episodeWrapRef = useRef(null);
 
+	useEffect(
+		() => setGenerated(generateNextEpisode(true)),
+		[]
+	);
+
 	const handleGenerate = () => {
 		if (init) {
 			setIsChanging(true);
 			setTimeout(() => setIsChanging(false), 700);
+
+			setGenerated(generateNextEpisode());
 		} else {
 			triggerAnimation(titleWrapRef.current, c.initTitleWrap);
 			triggerAnimation(progressWrapRef.current, c.initProgressWrap);
 			triggerAnimation(episodeWrapRef.current, c.initEpisodeWrap);
 			setInit(true);
+			saveIndex();
 		}
-
-		setGenerated(generateNextEpisode());
 	};
 
 	const handleTogglePlot = () => setShowPlot(!showPlot);

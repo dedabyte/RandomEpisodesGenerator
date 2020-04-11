@@ -16,7 +16,6 @@ const makeSEArr = () => {
 			seArr.push(makeSE(sIdx, eIdx));
 		});
 	});
-	// return seArr;
 	return shuffle(seArr);
 };
 
@@ -27,11 +26,19 @@ const makeNewData = () => {
 	ls.set(LsKeys.SHUFFLED_INDEX, lastIdx);
 }
 
+const generateNextIdx = (skipSave: boolean = false) => {
+	++lastIdx;
+	if (!skipSave) {
+		saveIndex();
+	}
+	return lastIdx;
+}
+
 export const initData = () => {
 	const seArrLS = ls.get(LsKeys.SHUFFLED);
 	const lastIdxLS = ls.get(LsKeys.SHUFFLED_INDEX);
 
-	if (seArrLS && lastIdxLS) {
+	if (seArrLS !== null && lastIdxLS !== null) {
 		seArr = seArrLS;
 		lastIdx = lastIdxLS;
 	} else {
@@ -39,18 +46,15 @@ export const initData = () => {
 	}
 };
 
-const generateNextIdx = () => {
-	++lastIdx;
-	ls.set(LsKeys.SHUFFLED_INDEX, lastIdx);
-	return lastIdx;
-}
+export const saveIndex = () => ls.set(LsKeys.SHUFFLED_INDEX, lastIdx);
 
-export const generateNextEpisode = (): GeneratedData => {
+export const generateNextEpisode = (skipSave: boolean = false): GeneratedData => {
+	console.log('generateNextEpisode');
 	if (lastIdx >= seArr.length - 1) {
 		makeNewData();
 	}
 
-	const nextIdx = generateNextIdx();
+	const nextIdx = generateNextIdx(skipSave);
 	const { sIdx, eIdx } = parseSE(seArr[nextIdx]);
 
 	return {

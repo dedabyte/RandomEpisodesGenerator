@@ -16,3 +16,21 @@ export const triggerAnimation = (ref: any, className: string) => {
 	ref.classList.add(className);
 	ref.addEventListener('animationend', () => ref.classList.remove(className), { once: true });
 }
+
+declare const cordova: any;
+
+export const openUrlInExternalApp = (url?: string) => {
+	try {
+		if (url && cordova && cordova.InAppBrowser) {
+			cordova.InAppBrowser.open(url, '_system');
+		} else if (!url) {
+			console.warn('openUrlInExternalApp', 'url is missing');
+		} else if (!cordova) {
+			console.warn('openUrlInExternalApp', 'cordova is missing');
+		} else if (!cordova.InAppBrowser) {
+			console.warn('openUrlInExternalApp', 'cordova.InAppBrowser is missing');
+		}
+	} catch (e) {
+		console.warn('openUrlInExternalApp', 'shit got fucked up', e);
+	}
+}

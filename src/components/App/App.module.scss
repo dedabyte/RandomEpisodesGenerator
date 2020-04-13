@@ -101,6 +101,22 @@ $height-progressWrap: 130px;
 		}
 	}
 
+	.netflixButton {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background: rgba(0, 0, 0, .5);
+		color: white;
+		font-weight: bold;
+		font-size: 14px;
+		padding: calc(#{$gutter / 2}) $gutter;
+		border-radius: $main-br 0 0 0;
+
+		&:active {
+			color: $color-1;
+		}
+	}
+
 	&.changeEpisode {
 		animation: changeEpisode #{$animation};
 	}
@@ -119,11 +135,6 @@ $height-progressWrap: 130px;
 
 
 .generateButton {
-	margin: 0;
-	padding: 0;
-	outline: none;
-	border: 0;
-
 	height: $height-generateButton;
 	font-size: 24px;
 	font-weight: bold;

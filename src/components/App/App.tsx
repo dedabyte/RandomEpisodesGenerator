@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import c from './App.module.scss';
 import cls from 'classnames';
 import { ProgressBar } from '../ProgressBar';
-import { makeSE, triggerAnimation } from '../../utils';
+import { makeSE, openUrlInExternalApp, triggerAnimation } from '../../utils';
 import { GeneratedData } from '../../types';
 import { generateNextEpisode, saveIndex } from '../../utils/generator';
 import { Info } from '../Info';
@@ -48,6 +48,8 @@ export const App = () => {
 
 	const handleTogglePlot = () => setShowPlot(!showPlot);
 
+	const handleNetflixButton = () => openUrlInExternalApp(generated.episode?.netflixUrl);
+
 	return (
 		<div id="app" className={cls(init && c.init)}>
 
@@ -71,6 +73,7 @@ export const App = () => {
 					<div className={cls(c.plotWrap, !showPlot && c.hide)} onClick={handleTogglePlot}>
 						<div className={cls(c.plot, !showPlot && c.hide)}>{generated.episode?.plot}</div>
 					</div>
+					<button className={c.netflixButton} onClick={handleNetflixButton}>NETFLIX &rarr;</button>
 				</div>
 			</div>
 

@@ -2,6 +2,7 @@ export interface EpisodeData {
 	title: string;
 	plot: string;
 	imageUrl?: string;
+	netflixUrl?: string;
 	airDate?: string;
 }
 
